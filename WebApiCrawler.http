@@ -1,0 +1,6 @@
+@WebApiCrawler_HostAddress = http://localhost:5288
+
+GET {{WebApiCrawler_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

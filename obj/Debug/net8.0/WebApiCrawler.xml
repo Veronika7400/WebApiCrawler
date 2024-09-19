@@ -1,0 +1,619 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApiCrawler</name>
+    </assembly>
+    <members>
+        <member name="M:WebApiCrawler.Data.CrawlerDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            This method is used to configure the model for the DbSet
+            </summary>
+            <param name="builder">The builder being used to construct the model for this context</param>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.ConfigurationController.AddConfiguration(WebApiCrawler.Models.WebConfigurationDto)">
+            <summary>
+            Adds a new configuration to the database
+            </summary>
+            <param name="confDto">The configuration data to add</param>
+            <returns>The result of the operation</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.ConfigurationController.GetConfigurations">
+            <summary>
+            Retrieves all configurations from the database
+            </summary>
+            <returns>
+            IActionResult containing a list of configurations if found,
+            otherwise returns a NotFound response indicating that no configurations were found
+            </returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.ConfigurationController.GetConfiguration(System.Guid)">
+            <summary>
+            Retrieves a configuration with the specified ID from the database
+            </summary>
+            <param name="id">The ID of the configuration to retrieve</param>
+            <returns>
+            IActionResult containing the configuration if found,
+            otherwise returns a BadRequest response indicating that the store was not found
+            </returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.ConfigurationController.GetStoreConfiguration(System.Guid)">
+            <summary>
+            Retrieves the web configuration associated with the specified store ID
+            </summary>
+            <param name="storeId">The unique identifier of the store</param>
+            <returns>
+            If successful, returns an OkObjectResult containing the web configuration for the specified store ID.
+            If no configuration is found for the specified store ID, returns a BadRequestObjectResult
+            </returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.ConfigurationController.DeleteConfiguration(System.Guid)">
+            <summary>
+            Deletes a configuration from the database
+            </summary>
+            <param name="id">The ID of the configuration to delete</param>
+            <returns>The result of the operation</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.ConfigurationController.UpdateConfiguration(System.Guid,WebApiCrawler.Models.WebConfigurationDto)">
+            <summary>
+            Updates an existing configuration in the database
+            </summary>
+            <param name="id">The ID of the configuration to update</param>
+            <param name="confDto">The configuration data to update</param>
+            <returns>The result of the operation</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.ConfigurationController.StoreExists(System.Guid)">
+            <summary>
+            Checks if a store exists in the database
+            </summary>
+            <param name="storeId">The ID of the store to check</param>
+            <returns>True if the store exists, otherwise false</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.CrawlerController.DownloadImages(System.Guid)">
+            <summary>
+            Downloads images for products associated with a specific web store
+            </summary>
+            <param name="webStoreId">The unique identifier of the web store.</param>
+            <returns>The result of the image download operation</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.CrawlerController.CheckSettings(WebApiCrawler.Models.WebConfiguration)">
+            <summary>
+            Checks if the provided web configuration settings are valid.
+            </summary>
+            <param name="configuration">The web configuration to check.</param>
+            <returns>True if the configuration settings are valid; otherwise, false.</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.IdentityController.AddBasicRole(System.String)">
+            <summary>
+            Adds the basic "user" role to a specified user.
+            </summary>
+            <param name="userId">The ID of the user to whom the role will be added.</param>
+            <returns>A task that represents the asynchronous operation.</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.IdentityController.UsersFiltered(System.Collections.Generic.List{WebApiCrawler.ShopModels.SearchModels.IdentityModel},System.String)">
+            <summary>
+            Filters a list of users by their full name.
+            </summary>
+            <param name="users">The list of users to filter.</param>
+            <param name="filter">The filter string to search for.</param>
+            <returns>A list of users whose full name contains the filter string.</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.IdentityController.GetRoles">
+            <summary>
+            Retrieves a list of all roles.
+            </summary>
+            <returns>A task that represents the asynchronous operation, containing an IActionResult with the list of roles.</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.IdentityController.DeleteUser(System.String)">
+            <summary>
+            Deletes a user from the database by their ID
+            </summary>
+            <param name="userId">The ID of the user to be deleted</param>
+            <returns> HTTP response indicating the success or failure of the deletion</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.IdentityController.AddUser(WebApiCrawler.ShopModels.SearchModels.IdentityModel)">
+            <summary>
+            Adds a new user to the database
+            </summary>
+            <param name="identityModel">The model containing the details of the user to be added</param>
+            <returns> HTTP response indicating the success or failure of the addition.</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.IdentityController.UpdateUser(WebApiCrawler.ShopModels.SearchModels.IdentityModel)">
+            <summary>
+            Updates the details of an existing user in the database
+            </summary>
+            <param name="identityModel">The model containing the updated details of the user</param>
+            <returns> HTTP response indicating the success or failure of the update.</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.IdentityController.GetUserById(System.String)">
+            <summary>
+            Retrieves a user by their ID from the database
+            </summary>
+            <param name="userId">The ID of the user to retrieve</param>
+            <returns>The user with the specified ID</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.IdentityController.UpdateUserDetails(WebApiCrawler.Data.ApplicationUser,WebApiCrawler.ShopModels.SearchModels.IdentityModel)">
+            <summary>
+            Updates the details of a user based on the provided identity model
+            </summary>
+            <param name="user">The user to update</param>
+            <param name="identityModel">The identity model containing updated user details</param>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.IdentityController.UpdateUserRole(System.String,System.String)">
+            <summary>
+            Updates the role of a user in the database
+            </summary>
+            <param name="userId">The ID of the user to update the role for</param>
+            <param name="roleId">The ID of the role to assign to the user</param>
+            <returns>A task representing the asynchronous operation</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.IdentityController.GetRoleId(System.String)">
+            <summary>
+            Retrieves the ID of a role based on its name
+            </summary>
+            <param name="roleName">The name of the role to retrieve the ID for</param>
+            <returns>The ID of the role with the specified name</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.IdentityController.CreateUser(WebApiCrawler.ShopModels.SearchModels.IdentityModel)">
+            <summary>
+            Creates a new user based on the provided identity model
+            </summary>
+            <param name="identityModel">The identity model containing user details</param>
+            <returns>A new ApplicationUser instance</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.IdentityController.GetUserIdByEmail(System.String)">
+            <summary>
+            Retrieves the ID of a user based on their email address
+            </summary>
+            <param name="email">The email address of the user to retrieve the ID for</param>
+            <returns>The ID of the user with the specified email address</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.IdentityController.AddUserRole(System.String,System.String)">
+            <summary>
+            Adds a role to a user in the database
+            </summary>
+            <param name="userId">The ID of the user to assign the role to</param>
+            <param name="roleId">The ID of the role to assign to the user</param>
+            <returns>A task representing the asynchronous operation</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.ImageController.AddImage(WebApiCrawler.Models.ImageDto)">
+            <summary>
+            Adds a new image to the database
+            </summary>
+            <param name="imageDto">The image data to add</param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.ImageController.GetImagesData">
+            <summary>
+            Retrieves all images data from the database
+            </summary>
+            <returns>
+            IActionResult containing a list of images if found,
+            otherwise returns a NotFound response indicating that no images were found
+            </returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.ImageController.GetImageData(System.Guid)">
+            <summary>
+            Retrieves a image data with the specified ID from the database
+            </summary>
+            <param name="id">The ID of the image to retrieve</param>
+            <returns>
+            IActionResult containing the image if found,
+            otherwise returns a BadRequest response indicating that the store was not found
+            </returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.ImageController.GetImageByPath(System.String)">
+            <summary>
+            Retrieves an image from the specified file path
+            </summary>
+            <param name="path">The file path of the image to retrieve</param>
+            <returns>
+            If successful, returns the image file with the appropriate content type.
+            If the image does not exist in the database or the file system, returns a Not Found error
+            If an error occurs while reading the image, returns a 500 Internal Server Error with details
+            </returns>
+             
+        </member>
+        <member name="M:WebApiCrawler.Controllers.ImageController.GetImageById(System.Guid)">
+            <summary>
+            Retrieves an image from the specified id
+            </summary>
+            <param name="id">The id of the image to retrieve</param>
+            <returns>
+            If successful, returns the image file with the appropriate content type.
+            If the image does not exist in the database or the file system, returns a Not Found error
+            If an error occurs while reading the image, returns a 500 Internal Server Error with details
+            </returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.ImageController.DeleteImage(System.Guid)">
+            <summary>
+            Deletes a image from the database
+            </summary>
+            <param name="id">The ID of the image to delete</param>
+            <returns>The result of the operation</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.ImageController.UpdateImage(System.Guid,WebApiCrawler.Models.ImageDto)">
+            <summary>
+            Updates an existing image in the database
+            </summary>
+            <param name="id">>The ID of the image to update</param>
+            <param name="imageDto">The image data to update</param>
+            <returns>The result of the operation</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.ImageController.ProductExists(System.Guid)">
+            <summary>
+             Checks if a product exists in the database
+            </summary>
+            <param name="productId">The ID of the product to check</param>
+            <returns>True if the product exists, otherwise false</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.ImageController.FileExists(System.String)">
+            <summary>
+            Checks if the specified file exists at the provided path
+            </summary>
+            <param name="path">The path of the file to check</param>
+            <returns>True if the file exists; otherwise, false</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.ImageController.GetImage(WebApiCrawler.Models.Image)">
+            <summary>
+            Retrieves an image from the specified file path.
+            </summary>
+            <param name="path">The file path of the image to retrieve.</param>
+            <returns>
+            If successful, returns the image file with the appropriate content type.
+            If the image does not exist in the file system, returns a Not Found error.
+            If an error occurs while reading the image, returns a 500 Internal Server Error with details.
+            </returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.ProductController.AddProduct(WebApiCrawler.Models.ProductDto)">
+            <summary>
+            Adds a new product to the database
+            </summary>
+            <param name="productDto">The product data to add</param>
+            <returns>The result of the operation</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.ProductController.GetProducts">
+            <summary>
+            Retrieves all products from the database
+            </summary>
+            <returns>
+            IActionResult containing a list of products if found,
+            otherwise returns a NotFound response indicating that no products were found
+            </returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.ProductController.GetProduct(System.Guid)">
+            <summary>
+            Retrieves a product with the specified ID from the database
+            </summary>
+            <param name="id">The ID of the product to retrieve</param>
+            <returns>
+            IActionResult containing the product if found,
+            otherwise returns a BadRequest response indicating that the store was not found
+            </returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.ProductController.DeleteProduct(System.Guid)">
+            <summary>
+            Deletes a product from the database
+            </summary>
+            <param name="id">The ID of the product to delete</param>
+            <returns>The result of the operation</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.ProductController.UpdateProduct(System.Guid,WebApiCrawler.Models.ProductDto)">
+            <summary>
+            Updates an existing product in the database
+            </summary>
+            <param name="id">The ID of the product to update</param>
+            <param name="productDto">The product data to update</param>
+            <returns>The result of the operation</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.ProductController.CodeExists(System.String)">
+            <summary>
+            Checks if a product with the specified code already exists in the database
+            </summary>
+            <param name="code">The code of the product to check</param>
+            <returns> True if the code is unique, otherwise false
+            </returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.ProductController.StoreExists(System.Guid)">
+            <summary>
+            Checks if a store exists in the database
+            </summary>
+            <param name="storeId">The ID of the store to check</param>
+            <returns>True if the store exists, otherwise false</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.SearchByNameController.GetLowestPriceFromAllStores(System.String,System.Int32,System.Int32)">
+            <summary>
+            Retrieves the lowest price for the given search word from all stores
+            </summary>
+            <param name="searchWord">The search word</param>
+            <returns>An IActionResult representing the lowest price from all stores</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.SearchByNameController.GetLowestPriceInEachStore(System.String,System.Int32,System.Int32)">
+            <summary>
+            Retrieves the lowest price for the specified search word from each store
+            </summary>
+            <param name="searchWord">The search word</param>
+            <returns>An asynchronous task that returns an IActionResult representing the lowest price from each store</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.SearchByNameController.GetLowestPriceInEachStoreWithoutPagination(System.String)">
+            <summary>
+             Retrieves the lowest price for the specified search word from each store, without applying pagination.
+            </summary>
+            <param name="searchWord">The search word</param>
+            <returns>An asynchronous task that returns an IActionResult representing the lowest price from each store</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.SearchByNameController.GetLowestPrice(System.String,System.Guid)">
+            <summary>
+            Retrieves the lowest price for the specified search word from a specific store
+            </summary>
+            <param name="searchWord">The search word</param>
+            <param name="guid">The unique identifier of the store</param>
+            <returns>An asynchronous task that returns an IActionResult representing the lowest price from the specified store</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.SearchByNameController.GetPricesFromStore(System.String,System.Guid)">
+            <summary>
+            Retrieves the prices from a specific store for the specified search word
+            </summary>
+            <param name="searchWord">The search word</param>
+            <param name="guid">The unique identifier of the store</param>
+            <returns>An asynchronous task that returns an IActionResult representing the prices from the specified store.</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.SearchByNameController.GetPricesFromStoreLowestPriceResult(System.String,System.Guid,System.Int32,System.Int32)">
+            <summary>
+            Retrieves collection of LowestPriceResult objects representig products from a specific store based on the search word and store ID
+            </summary>
+            <param name="searchWord">The search word used to query the products</param>
+            <param name="guid">The unique identifier of the store</param>
+            <returns>
+            Returns the lowest prices for products from the specific store
+            </returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.SearchByNameController.GetPricesFromStoreLowestPriceResultWithoutPagination(System.String,System.Guid)">
+            <summary>
+            Retrieves the lowest price results for a given search word from a store, without applying pagination.
+            </summary>
+            <param name="searchWord">The search term to use for finding prices.</param>
+            <param name="guid">The unique identifier for the store or product for which to retrieve prices.</param>
+            <returns>An IActionResult containing the results of the price retrieval operation.</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.StoreController.AddStore(WebApiCrawler.Models.WebStoreDto)">
+            <summary>
+            Adds a new store to the database
+            </summary>
+            <param name="webStoreDto">The store data to add</param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.StoreController.GetStores">
+            <summary>
+            Retrieves all stores from the database
+            </summary>
+            <returns>
+            IActionResult containing a list of stores if found,
+            otherwise returns a NotFound response indicating that no stores were found
+            </returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.StoreController.GetStore(System.Guid)">
+            <summary>
+            Retrieves a store with the specified ID from the database
+            </summary>
+            <param name="id">The ID of the store to retrieve</param>
+            <returns>
+            IActionResult containing the store if found,
+            otherwise returns a BadRequest response indicating that the store was not found
+            </returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.StoreController.DeleteStore(System.Guid)">
+            <summary>
+            Deletes a store from the database
+            </summary>
+            <param name="id">The ID of the store to delete</param>
+            <returns>The result of the operation</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.StoreController.UpdateStore(System.Guid,WebApiCrawler.Models.WebStoreDto)">
+            <summary>
+            Updates an existing store in the database
+            </summary>
+            <param name="id">The ID of the store to update</param>
+            <param name="webStoreDto">The store data to update</param>
+            <returns>The result of the operation</returns>
+        </member>
+        <member name="M:WebApiCrawler.Controllers.StoreController.UniqueName(System.String)">
+            <summary>
+            Checks if a store with the specified name already exists in the database
+            </summary>
+            <param name="name">The name of the store to check</param>
+            <returns>True if the store name is unique, otherwise false</returns>
+        </member>
+        <member name="T:WebApiCrawler.Migrations.Migration_v1">
+            <inheritdoc />
+        </member>
+        <member name="M:WebApiCrawler.Migrations.Migration_v1.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:WebApiCrawler.Migrations.Migration_v1.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:WebApiCrawler.Migrations.Migration_v1.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:WebApiCrawler.Migrations.WebApiCrawler.Migration_v2">
+            <inheritdoc />
+        </member>
+        <member name="M:WebApiCrawler.Migrations.WebApiCrawler.Migration_v2.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:WebApiCrawler.Migrations.WebApiCrawler.Migration_v2.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:WebApiCrawler.Migrations.WebApiCrawler.Migration_v2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:WebApiCrawler.Migrations.WebApiCrawler.Migration_v3">
+            <inheritdoc />
+        </member>
+        <member name="M:WebApiCrawler.Migrations.WebApiCrawler.Migration_v3.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:WebApiCrawler.Migrations.WebApiCrawler.Migration_v3.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:WebApiCrawler.Migrations.WebApiCrawler.Migration_v3.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:WebApiCrawler.Services.Crawler.CreateDowloadFolder(System.String)">
+            <summary>
+            Creates a directory at the specified file path if it does not already exist
+            </summary>
+            <param name="filePath">The path of the directory to create</param>
+            <returns>True if the directory was created successfully or already exists, otherwise, false</returns>
+        </member>
+        <member name="M:WebApiCrawler.Services.Crawler.DownloadProductImage(WebApiCrawler.Models.Product,WebApiCrawler.Models.WebConfiguration)">
+            <summary>
+            Downloads the image of the specified product from the web page
+            </summary>
+            <param name="product">The product for which to download the image</param>
+            <param name="configuration">The web configuration </param>
+            <returns>The image data transfer object</returns>
+        </member>
+        <member name="M:WebApiCrawler.Services.Crawler.GetPageUrl(WebApiCrawler.Models.WebConfiguration,HtmlAgilityPack.HtmlNode)">
+            <summary>
+            Retrieves the URL of the page where the image is located
+            </summary>
+            <param name="configuration">Web configuration</param>
+            <param name="firstImage">First image on the page</param>
+            <returns>The URL of the page where the image is located</returns>
+        </member>
+        <member name="M:WebApiCrawler.Services.Crawler.GetFirstImage(HtmlAgilityPack.HtmlNodeCollection)">
+            <summary>
+            Retrieves the first image from a collection 
+            </summary>
+            <param name="images">Collection of HTML nodes</param>
+            <returns>The first HTML node representing an image, or null if the collection is empty</returns>
+        </member>
+        <member name="M:WebApiCrawler.Services.Crawler.FileExists(System.String)">
+            <summary>
+            Checks if the specified file exists at the provided path
+            </summary>
+            <param name="path">The path of the file to check</param>
+            <returns>True if the file exists; otherwise, false</returns>
+        </member>
+        <member name="M:WebApiCrawler.Services.Crawler.GetFirstImageUrlFromPage(System.String,WebApiCrawler.Models.WebConfiguration)">
+            <summary>
+            Retrieves the URL of the first image from a web page specified by the given URL and web configuration
+            </summary>
+            <param name="pageUrl">The URL of the web page from which to retrieve the image URL</param>
+            <param name="conf">The web configuration containing the XPath expression to locate the image on the web page</param>
+            <returns>
+            If successful, returns the URL of the first image. If no image is found or an error occurs during the process
+            returns null
+            </returns>
+        </member>
+        <member name="M:WebApiCrawler.Services.ImageService.AddNewImage(WebApiCrawler.Models.ImageDto)">
+            <summary>
+            Adds a new image to the database
+            </summary>
+            <param name="imageDto">The data transfer object representing the image to be added</param>
+            <returns>Result of the operation</returns>
+        </member>
+        <member name="M:WebApiCrawler.Services.ImageService.ProductExists(System.Guid)">
+            <summary>
+             Checks if a product exists in the database
+            </summary>
+            <param name="productId">The ID of the product to check</param>
+            <returns>True if the product exists, otherwise false</returns>
+        </member>
+        <member name="M:WebApiCrawler.Services.ImageService.ImageExists(WebApiCrawler.Models.ImageDto)">
+            <summary>
+            Checks if an image already exists in the database based on its path
+            </summary>
+            <param name="imageDto">The image data transfer object containing the path of the image to check</param>
+            <returns>Returns true if the image already exists in the database; otherwise, returns false</returns>
+        </member>
+        <member name="M:WebApiCrawler.Services.PriceService.GetLowestPriceInEachStore(System.String,System.Int32,System.Int32)">
+            <summary>
+            Retrieves the lowest price for the given search word in each store with pagination
+            </summary>
+            <param name="searchWord">The search word to be used</param>
+            <param name="page">The page number to retrieve</param>
+            <param name="pageSize">The number of products per page</param>
+            <returns>An IActionResult representing the lowest prices in each store</returns>
+        </member>
+        <member name="M:WebApiCrawler.Services.PriceService.GetLowestPriceInEachStoreWithoutPagination(System.String)">
+            <summary>
+            Retrieves the lowest price for the given search word in each store
+            </summary>
+            <param name="searchWord">The search word to be used</param>
+            <returns>An IActionResult representing the lowest prices in each store</returns>
+        </member>
+        <member name="M:WebApiCrawler.Services.PriceService.GetLowestPrice(Microsoft.AspNetCore.Mvc.IActionResult)">
+            <summary>
+            Gets the lowest price from the collection of the prices
+            </summary>
+            <param name="pricesResult">The collection of prices</param>
+            <returns>An IActionResult representing the lowest price</returns>
+        </member>
+        <member name="M:WebApiCrawler.Services.PriceService.GetPricesFromUrl(System.String,System.Guid)">
+            <summary>
+            Retrieves prices from the provided url
+            </summary>
+            <param name="searchWord">The search word to be used</param>
+            <param name="guid">The GUID of the store</param>
+            <returns>An IActionResult representing the retrieved prices</returns>
+        </member>
+        <member name="M:WebApiCrawler.Services.PriceService.GetPricesFromUrlLowestPriceResult(System.String,System.Guid,System.Int32,System.Int32)">
+            <summary>
+            Retrieves the collection of LowestPriceResult objects for products from a specified URL
+            </summary>
+            <param name="searchWord">The search word used to find products</param>
+            <param name="guid">The unique identifier of the store configuration</param>
+            <param name="page">The page number to retrieve</param>
+            <param name="pageSize">The number of products per page</param>
+            <returns>If successful, returns an OkObjectResult with a collection of LowestPriceResult objects. If an error occurs during the retrieval process, returns a BadRequestObjectResult with an error message</returns>
+        </member>
+        <member name="M:WebApiCrawler.Services.PriceService.GetPricesFromUrlLowestPriceResultWithoutPagination(System.String,System.Guid)">
+            <summary>
+            Retrieves the lowest price results for a given search term from a specific store without applying pagination.
+            </summary>
+            <param name="searchWord">The search term to use when querying for prices.</param>
+            <param name="guid">The unique identifier for the store from which to retrieve prices.</param>
+            <returns>
+            An IActionResult representing the result of the price retrieval operation. If successful, returns a 200 OK response with a list of lowest price results. 
+            If there are issues, such as invalid store or configuration, or if an error occurs during retrieval, returns a 400 Bad Request response with an appropriate error message.
+            </returns>
+        </member>
+        <member name="M:WebApiCrawler.Services.PriceService.GetDisplayType(System.Guid)">
+            <summary>
+            Retrieves the display type for the specified store ID
+            </summary>
+            <param name="guid">The unique identifier of the store</param>
+            <returns>The display type associated with the specified store ID, or null if not found</returns>
+        </member>
+        <member name="M:WebApiCrawler.Services.PriceService.GetResultType(System.Guid)">
+            <summary>
+            Retrieves the response type for the specified store ID
+            </summary>
+            <param name="guid">The unique identifier of the store</param>
+            <returns>The response type associated with the specified store ID, or null if not found</returns>
+        </member>
+        <member name="M:WebApiCrawler.Services.PriceService.GetStoreSearchUrl(System.Guid)">
+            <summary>
+            Retrieves the search URL for the specified store ID
+            </summary>
+            <param name="guid">The unique identifier of the store</param>
+            <returns>The search URL associated with the specified store ID, or null if not found</returns>
+        </member>
+        <member name="M:WebApiCrawler.Services.PriceService.FindLowestPrice(WebApiCrawler.SearchModels.ISearchResultDto)">
+            <summary>
+            Finds the product with the lowest price from the list of products
+            </summary>
+            <param name="searchResult">The search result containing the list of products</param>
+            <returns>The product with the lowest price if it exists, otherwise null</returns>
+        </member>
+        <member name="M:WebApiCrawler.Services.PriceService.ValidConfiguration(System.Guid)">
+            <summary>
+            Check if configuration is valid for a given store
+            </summary>
+            <param name="guid">The unique identifier of the store</param>
+            <returns>True if the configuration is valid, otherwise false</returns>
+        </member>
+    </members>
+</doc>
